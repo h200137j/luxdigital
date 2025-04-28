@@ -3,6 +3,7 @@
 * Template URL: https://bootstrapmade.com/flexstart-bootstrap-startup-template/
 * Author: BootstrapMade.com
 * License: https://bootstrapmade.com/license/
+* Modified: Lux Digital Technologies - Modern UI Update
 */
 (function() {
   "use strict";
@@ -272,16 +273,187 @@
   });
 
   /**
-   * Animation on scroll
+   * Theme Toggle functionality
+   */
+  const themeToggle = document.getElementById('theme-toggle');
+  const themeIcon = themeToggle.querySelector('i');
+  
+  // Function to set the theme and update particles
+  function setTheme(themeName) {
+    document.documentElement.setAttribute('data-theme', themeName);
+    localStorage.setItem('theme', themeName);
+    
+    // Update the icon
+    if (themeName === 'dark') {
+      themeIcon.classList.remove('bi-moon');
+      themeIcon.classList.add('bi-sun');
+      // Update particles for dark theme if already initialized
+      if (window.pJSDom && window.pJSDom[0]) {
+        window.pJSDom[0].pJS.particles.color.value = '#ffffff';
+        window.pJSDom[0].pJS.particles.line_linked.color = '#ffffff';
+        window.pJSDom[0].pJS.fn.particlesRefresh();
+      }
+    } else {
+      themeIcon.classList.remove('bi-sun');
+      themeIcon.classList.add('bi-moon');
+      // Update particles for light theme if already initialized
+      if (window.pJSDom && window.pJSDom[0]) {
+        window.pJSDom[0].pJS.particles.color.value = '#4361ee';
+        window.pJSDom[0].pJS.particles.line_linked.color = '#4361ee';
+        window.pJSDom[0].pJS.fn.particlesRefresh();
+      }
+    }
+  }
+  
+  // Function to toggle between light and dark themes
+  function toggleTheme() {
+    const currentTheme = localStorage.getItem('theme') || 'light';
+    if (currentTheme === 'light') {
+      setTheme('dark');
+    } else {
+      setTheme('light');
+    }
+  }
+  
+  // Event listener for theme toggle button
+  themeToggle.addEventListener('click', toggleTheme);
+  
+  // Check for saved theme preference or default to light mode
+  window.addEventListener('load', () => {
+    const savedTheme = localStorage.getItem('theme') || 'light';
+    setTheme(savedTheme);
+  });
+
+  /**
+   * Initialize particles animation
+   */
+  window.addEventListener('load', function() {
+    if (document.getElementById('particles-js')) {
+      const currentTheme = localStorage.getItem('theme') || 'light';
+      const particleColor = currentTheme === 'dark' ? '#ffffff' : '#4361ee';
+      
+      particlesJS('particles-js', {
+        "particles": {
+          "number": {
+            "value": 80,
+            "density": {
+              "enable": true,
+              "value_area": 800
+            }
+          },
+          "color": {
+            "value": particleColor
+          },
+          "shape": {
+            "type": "circle",
+            "stroke": {
+              "width": 0,
+              "color": "#000000"
+            },
+            "polygon": {
+              "nb_sides": 5
+            }
+          },
+          "opacity": {
+            "value": 0.5,
+            "random": false,
+            "anim": {
+              "enable": false,
+              "speed": 1,
+              "opacity_min": 0.1,
+              "sync": false
+            }
+          },
+          "size": {
+            "value": 3,
+            "random": true,
+            "anim": {
+              "enable": false,
+              "speed": 40,
+              "size_min": 0.1,
+              "sync": false
+            }
+          },
+          "line_linked": {
+            "enable": true,
+            "distance": 150,
+            "color": particleColor,
+            "opacity": 0.4,
+            "width": 1
+          },
+          "move": {
+            "enable": true,
+            "speed": 2,
+            "direction": "none",
+            "random": false,
+            "straight": false,
+            "out_mode": "out",
+            "bounce": false,
+            "attract": {
+              "enable": false,
+              "rotateX": 600,
+              "rotateY": 1200
+            }
+          }
+        },
+        "interactivity": {
+          "detect_on": "canvas",
+          "events": {
+            "onhover": {
+              "enable": true,
+              "mode": "grab"
+            },
+            "onclick": {
+              "enable": true,
+              "mode": "repulse"
+            },
+            "resize": true
+          },
+          "modes": {
+            "grab": {
+              "distance": 180,
+              "line_linked": {
+                "opacity": 0.8
+              }
+            },
+            "bubble": {
+              "distance": 400,
+              "size": 40,
+              "duration": 2,
+              "opacity": 8,
+              "speed": 3
+            },
+            "repulse": {
+              "distance": 200,
+              "duration": 0.4
+            },
+            "push": {
+              "particles_nb": 4
+            },
+            "remove": {
+              "particles_nb": 2
+            }
+          }
+        },
+        "retina_detect": true
+      });
+    }
+  });
+
+  /**
+   * Animation on scroll - Enhanced for modern UI
    */
   function aos_init() {
     AOS.init({
-      duration: 1000,
+      duration: 800,
       easing: "ease-in-out",
       once: true,
-      mirror: false
+      mirror: false,
+      offset: 50,
+      anchorPlacement: 'top-bottom'
     });
   }
+  
   window.addEventListener('load', () => {
     aos_init();
   });
@@ -290,5 +462,51 @@
    * Initiate Pure Counter 
    */
   new PureCounter();
+
+  /**
+   * Navbar highlight effect for active item
+   */
+  const navItems = document.querySelectorAll('.navbar .nav-link');
+  navItems.forEach(item => {
+    item.addEventListener('mouseover', () => {
+      if (!item.classList.contains('active')) {
+        item.style.transition = '0.3s';
+        item.style.transform = 'translateY(-3px)';
+      }
+    });
+    
+    item.addEventListener('mouseout', () => {
+      if (!item.classList.contains('active')) {
+        item.style.transform = 'translateY(0px)';
+      }
+    });
+  });
+
+  /**
+   * Parallax effect for hero section
+   */
+  const heroSection = document.querySelector('.hero');
+  if (heroSection) {
+    window.addEventListener('scroll', () => {
+      const scrollPosition = window.scrollY;
+      if (scrollPosition < 800) {
+        heroSection.style.backgroundPositionY = `${scrollPosition * 0.05}px`;
+      }
+    });
+  }
+
+  /**
+   * Service boxes animation on hover
+   */
+  const serviceBoxes = document.querySelectorAll('.service-box');
+  serviceBoxes.forEach(box => {
+    box.addEventListener('mouseenter', () => {
+      box.querySelector('.icon').style.transform = 'scale(1.1)';
+    });
+    
+    box.addEventListener('mouseleave', () => {
+      box.querySelector('.icon').style.transform = 'scale(1)';
+    });
+  });
 
 })();

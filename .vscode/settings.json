@@ -1,0 +1,53 @@
+{
+    "workbench.colorCustomizations": {
+        "[Community Material Theme Ocean High Contrast]": {
+            "editor.background": "#000000"
+        },
+        "terminal.foreground": "#00ffff",
+        "terminal.background": "#000000",
+        "terminalCursor.background": "#000000",
+        "terminalCursor.foreground": "#00ffff",
+        "[Material Theme Darker High Contrast]": {
+            "activityBarBadge.background": "#7CB342",
+            "activityBar.activeBorder": "#7CB342",
+            "list.activeSelectionForeground": "#7CB342",
+            "list.inactiveSelectionForeground": "#7CB342",
+            "list.highlightForeground": "#7CB342",
+            "scrollbarSlider.activeBackground": "#7CB34250",
+            "editorSuggestWidget.highlightForeground": "#7CB342",
+            "textLink.foreground": "#7CB342",
+            "progressBar.background": "#7CB342",
+            "pickerGroup.foreground": "#7CB342",
+            "tab.activeBorder": "#7CB342",
+            "notificationLink.foreground": "#7CB342",
+            "editorWidget.resizeBorder": "#7CB342",
+            "editorWidget.border": "#7CB342",
+            "settings.modifiedItemIndicator": "#7CB342",
+            "settings.headerForeground": "#7CB342",
+            "panelTitle.activeBorder": "#7CB342",
+            "breadcrumb.activeSelectionForeground": "#7CB342",
+            "menu.selectionForeground": "#7CB342",
+            "menubar.selectionForeground": "#7CB342",
+            "editor.findMatchBorder": "#7CB342",
+            "selection.background": "#7CB34240",
+            "statusBarItem.remoteBackground": "#7CB342"
+        },
+        "[Material Theme Ocean High Contrast]": {},
+        "activityBar.activeBackground": "#ff58ac",
+        "activityBar.background": "#ff58ac",
+        "activityBar.foreground": "#15202b",
+        "activityBar.inactiveForeground": "#15202b99",
+        "activityBarBadge.background": "#80ff00",
+        "activityBarBadge.foreground": "#15202b",
+        "commandCenter.border": "#e7e7e799",
+        "sash.hoverBorder": "#ff58ac",
+        "statusBarItem.hoverBackground": "#ff58ac",
+        "statusBarItem.remoteBackground": "#ff2593",
+        "statusBarItem.remoteForeground": "#e7e7e7",
+        "titleBar.activeBackground": "#ff2593",
+        "titleBar.activeForeground": "#e7e7e7",
+        "titleBar.inactiveBackground": "#ff259399",
+        "titleBar.inactiveForeground": "#e7e7e799"
+    },
+    "peacock.color": "#ff2593"
+}
